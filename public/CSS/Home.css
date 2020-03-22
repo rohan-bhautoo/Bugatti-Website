@@ -1,0 +1,144 @@
+/* Ensure proper sizing */
+* {
+    box-sizing: border-box;
+    font-family: Roboto, sans-serif;
+}
+
+/* Import Roboto fonts from folder */
+@font-face {
+    font-family: Roboto;
+    src: url("../Fonts/Roboto/Roboto-Regular.ttf");
+}
+
+/*
+    Ensure that body and html uses 100% of website page.
+    Smooth scroll is used for Features & Get-In-Touch option in nav bar.
+*/
+body,
+html {
+    height: 100%;
+    margin: 0px;
+    scroll-behavior: smooth;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    display: inline;
+}
+
+a {
+    outline: none;
+    text-decoration: none !important;
+}
+
+.navbar-area {
+    height: 50px;
+}
+
+.navbar a,
+.logo a {
+    float: left;
+    text-align: center;
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.menu span {
+    float: left;
+    padding: 10px 20px;
+}
+
+.logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 12%;
+}
+
+.logo img {
+    width: 100px;
+}
+
+.navbar {
+    float: right;
+}
+
+.navbar-nav > li{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 2px;
+}
+
+.nav-link {
+    color: black;
+}
+
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+
+.overlay .closeBtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 650px;
+    max-height: 650px;
+}
+
+.caption {
+    color: white;
+    position: absolute;
+    top: 20%;
+    left: 8%;
+}
+
+.caption h1 {
+    font-size: 55px;
+}
+
+.caption p {
+    font-size: 23px;
+    text-transform: uppercase;
+}
