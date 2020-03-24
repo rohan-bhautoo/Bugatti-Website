@@ -11,6 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="User.js"></script>
 </head>
 <body>
 
@@ -59,28 +60,28 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                     </div>
-                    <input type="text" name="username" class="form-control" placeholder="Username">
+                    <input type="text" name="username" class="form-control" placeholder="Username" id="regUsername">
                 </div>
 
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fas fa-info-circle"></i> </span>
                     </div>
-                    <input type="text" name="firstName" class="form-control" placeholder="First Name">
+                    <input type="text" name="firstName" class="form-control" placeholder="First Name" id="regFirstName">
                 </div>
 
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fas fa-info-circle"></i> </span>
                     </div>
-                    <input type="text" name="lastName" class="form-control" placeholder="Last Name">
+                    <input type="text" name="lastName" class="form-control" placeholder="Last Name" id="regLastName">
                 </div>
 
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fas fa-venus-mars"></i> </i> </span>
                     </div>
-                    <select class="form-control">
+                    <select id="gender" class="form-control">
                         <option selected="" disabled="disabled">Select Gender</option>
                         <option>Male</option>
                         <option>Female</option>
@@ -91,28 +92,29 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                     </div>
-                    <input type="email" name="email" class="form-control" placeholder="Email-Address">
+                    <input type="email" name="email" class="form-control" placeholder="Email-Address" id="regEmailAddress">
                 </div>
 
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                     </div>
-                    <input type="password" name="password" class="form-control" placeholder="Password">
+                    <input type="password" name="password" class="form-control" placeholder="Password" id="regPassword">
                 </div>
 
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                     </div>
-                    <input type="password" name="confirmPassword" class="form-control" placeholder="Confirm Password">
+                    <input type="password" name="confirmPassword" class="form-control" placeholder="Confirm Password" id="regConfirmPassword">
                 </div>
 
             </div>
 
             <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+                <button type="submit" class="btn btn-primary btn-block" onclick="addUser()">Create Account</button>
             </div>
+            <p class="text-center" id="AddUserResult"></p>
             <p class="text-center">Have an account? <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#loginModal">Log In</a> </p>
         </div>
     </div>
@@ -131,14 +133,14 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                     </div>
-                    <input type="text" name="username" class="form-control" placeholder="Username">
+                    <input type="text" name="username" class="form-control" placeholder="Username" id="loginUsername">
                 </div>
 
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                     </div>
-                    <input type="password" name="password" class="form-control" placeholder="Password">
+                    <input type="password" name="password" class="form-control" placeholder="Password" id="loginPassword">
                 </div>
 
                 <div class="form-group">
