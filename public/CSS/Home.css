@@ -173,3 +173,84 @@ a {
     font-size: 23px;
     text-transform: uppercase;
 }
+
+#footer {
+    background: black;
+    padding: 20px 0;
+}
+
+#footer P {
+    color: #999999;
+}
+
+#footer a {
+    color: #999999;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+#footer a:hover {
+    color: #555555;
+}
+
+#footer ul {
+    padding-left: 0;
+}
+
+#footer ul > li{
+    padding-left: 18px;
+    padding-right: 18px;
+}
+
+#footer .social {
+    text-align: left;
+}
+
+#footer .social a {
+    margin: 0 10px 0 0;
+    display: inline-block;
+    color: #ffffff;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    line-height: 30px;
+    font-size: 15px;
+    text-align: center;
+    vertical-align: bottom;
+    text-decoration: none;
+}
+
+.fa-envelope:hover,
+.fab:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook-f {
+    background: #3b5998;
+    color: white;
+}
+
+.fa-twitter {
+    background: #55acee;
+    color: white;
+}
+
+.fa-instagram {
+    background: #125688;
+    color: white;
+}
+
+.fa-pinterest-p {
+    background: #cb2027;
+    color: white;
+}
+
+.fa-youtube {
+    background: #bb0000;
+    color: white;
+}
+
+.fa-linkedin-in {
+    background: #007bb5;
+    color: white;
+}

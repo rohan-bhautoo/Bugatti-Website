@@ -2,13 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1592ff45-7e49-4954-aa53-60fe5dc72455" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Database.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/User.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/Javascript/RegisterValidation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/OnePageWeb.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/OnePageWeb.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server.js" beforeDir="false" afterPath="$PROJECT_DIR$/Server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/CSS/Home.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/CSS/Home.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/Home.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/Home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/Javascript/User.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,11 +40,13 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="jsx.switch.disabled" value="true" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/Javascript" />
       <recent name="$PROJECT_DIR$/public" />
     </key>
   </component>
@@ -74,7 +77,10 @@
       <workItem from="1584886033519" duration="105000" />
       <workItem from="1584886154411" duration="12068000" />
       <workItem from="1584948633805" duration="20440000" />
-      <workItem from="1585027707684" duration="1449000" />
+      <workItem from="1585027707684" duration="1684000" />
+      <workItem from="1585157065935" duration="9877000" />
+      <workItem from="1585328273493" duration="174000" />
+      <workItem from="1585568938000" duration="11077000" />
     </task>
     <servers />
   </component>
@@ -86,5 +92,9 @@
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state x="640" y="280" width="630" height="561" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1584885985580" />
+    <state x="540" y="250" key="run.anything.popup" timestamp="1585591858505">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state x="540" y="250" key="run.anything.popup/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1585591858505" />
   </component>
 </project>

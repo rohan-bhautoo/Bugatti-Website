@@ -7,11 +7,16 @@
     <link rel="stylesheet" href="CSS/Home.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.14.0/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="User.js"></script>
+    <script type="text/javascript" src="Javascript/User.js"></script>
+    <script type="text/javascript" src="Javascript/RegisterValidation.js"></script>
 </head>
 <body>
 
@@ -56,63 +61,91 @@
 
             <div class="modal-body">
 
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                <form role="form" id="registerForm" class="form-horizontal needs-validation" method="post" novalidate>
+                    <div class="form-row">
+                        <div class="form-group input-group col-md-12">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroupPrependUsername"> <i class="fa fa-user"></i> </span>
+                            </div>
+                            <input type="text" name="regUsername" class="form-control" placeholder="Username" id="regUsername" aria-describedby="inputGroupPrepend" required>
+                            <div class="invalid-feedback">
+                                Invalid Username!
+                            </div>
+                        </div>
+
+                        <div class="form-group input-group col-md-12">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroupPrependFirstName"> <i class="fas fa-info-circle"></i> </span>
+                            </div>
+                            <input type="text" name="regFirstName" class="form-control" placeholder="First Name" id="regFirstName" aria-describedby="inputGroupPrependFirstName" required>
+                            <div class="invalid-feedback">
+                                Invalid First Name!
+                            </div>
+                        </div>
+
+                        <div class="form-group input-group col-md-12">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroupPrependLastName"> <i class="fas fa-info-circle"></i> </span>
+                            </div>
+                            <input type="text" name="regLastName" class="form-control" placeholder="Last Name" id="regLastName" aria-describedby="inputGroupPrependLastName" required>
+                            <div class="invalid-feedback">
+                                Invalid Last Name!
+                            </div>
+                        </div>
+
+                        <div class="form-group input-group col-md-12">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroupPrependGender"> <i class="fas fa-venus-mars"></i> </i> </span>
+                            </div>
+                            <select name="gender" id="gender" class="form-control" aria-describedby="inputGroupPrependGender" required>
+                                <option selected disabled>Select Gender:</option>
+                                <option>Male</option>
+                                <option>Female</option>
+                            </select>
+
+                            <div class="invalid-feedback">
+                                Please select an option!
+                            </div>
+                        </div>
+
+                        <div class="form-group input-group col-md-12">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroupPrependEmail"> <i class="fa fa-envelope"></i> </span>
+                            </div>
+
+                            <input type="email" name="regEmailAddress" class="form-control" placeholder="Email-Address" id="regEmailAddress" aria-describedby="inputGroupPrependEmail" required>
+                            <div class="invalid-feedback">
+                                Invalid Email-Address!
+                            </div>
+                        </div>
+
+                        <div class="form-group input-group col-md-12">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroupPrependPass"> <i class="fa fa-lock"></i> </span>
+                            </div>
+
+                            <input type="password" name="regPassword" class="form-control" placeholder="Password" id="regPassword" aria-describedby="inputGroupPrependPass" required>
+                            <div class="invalid-feedback">
+                                Invalid Password
+                            </div>
+                        </div>
+
+                        <div class="form-group input-group col-md-12">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroupPrependConfirmPass"> <i class="fa fa-lock"></i> </span>
+                            </div>
+
+                            <input type="password" name="regConfirmPassword" class="form-control" placeholder="Confirm Password" id="regConfirmPassword" aria-describedby="inputGroupPrependConfirmPass" required>
+                            <div class="invalid-feedback">
+                                Invalid Password
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <button type="submit" class="btn btn-primary btn-block" onclick="addUser()">Create Account</button>
+                        </div>
                     </div>
-                    <input type="text" name="username" class="form-control" placeholder="Username" id="regUsername">
-                </div>
-
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fas fa-info-circle"></i> </span>
-                    </div>
-                    <input type="text" name="firstName" class="form-control" placeholder="First Name" id="regFirstName">
-                </div>
-
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fas fa-info-circle"></i> </span>
-                    </div>
-                    <input type="text" name="lastName" class="form-control" placeholder="Last Name" id="regLastName">
-                </div>
-
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fas fa-venus-mars"></i> </i> </span>
-                    </div>
-                    <select id="gender" class="form-control">
-                        <option selected="" disabled="disabled">Select Gender</option>
-                        <option>Male</option>
-                        <option>Female</option>
-                    </select>
-                </div>
-
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-                    </div>
-                    <input type="email" name="email" class="form-control" placeholder="Email-Address" id="regEmailAddress">
-                </div>
-
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-                    </div>
-                    <input type="password" name="password" class="form-control" placeholder="Password" id="regPassword">
-                </div>
-
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-                    </div>
-                    <input type="password" name="confirmPassword" class="form-control" placeholder="Confirm Password" id="regConfirmPassword">
-                </div>
-
-            </div>
-
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-block" onclick="addUser()">Create Account</button>
+                </form>
             </div>
             <p class="text-center" id="AddUserResult"></p>
             <p class="text-center">Have an account? <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#loginModal">Log In</a> </p>
@@ -191,6 +224,45 @@
     </div>
 </section>
 
+<section class="models">
+
+</section>
+
+<section class="footer">
+    <div id="footer">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="text-center">
+                    <p class="social">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                        <a href="#" class="fab fa-pinterest-p"></a>
+                        <a href="#" class="fab fa-youtube"></a>
+                        <a href="#" class="fab fa-linkedin-in"></a>
+                    </p>
+                </div>
+
+                <div class="col-md-12">
+                    <p class="text-center">&copy; 2020 BUGATTI AUTOMOBILES</p>
+                </div>
+
+                <div class="col-sm-12 text-center">
+                    <ul>
+                        <li><a href="#">CONTACT</a></li>
+                        <li><a href="#">CAREER</a></li>
+                        <li><a href="#">MEDIA</a></li>
+                        <li><a href="#">DATA PROTECTION NOTICE</a></li>
+                        <li><a href="#">LEGAL NOTICE</a></li>
+                        <li><a href="#">UK MODERN SLAVERY ACT</a></li>
+                        <li><a href="#">CODE OF CONDUCT</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <script>
     function openNav() {
         document.getElementById("navigationMenu").style.width = "100%";
@@ -199,7 +271,6 @@
     function closeNav() {
         document.getElementById("navigationMenu").style.width = "0%";
     }
-
 </script>
 
 </body>
