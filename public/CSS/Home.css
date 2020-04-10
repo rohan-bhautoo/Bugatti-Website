@@ -17,7 +17,7 @@
 body,
 html {
     height: 100%;
-    margin: 0px;
+    margin: 0;
     scroll-behavior: smooth;
 }
 
@@ -298,6 +298,24 @@ video {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
+.box2 {
+    background: #08262c;
+    margin: 30px 0 30px;
+    border: solid 1px #fff;
+    box-sizing: border-box;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.5);
+}
+
+.box3 {
+    background: #000;
+    margin: 30px 0 30px;
+    border: solid 1px #fff;
+    box-sizing: border-box;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.4);
+}
+
 .car_model {
     margin-top: 0;
     margin-bottom: 40px;
@@ -355,4 +373,30 @@ video {
 
 .review {
     padding: 10px;
+}
+
+.Divo {
+    background: #08262c;
+    color: #fff;
+}
+
+.LaVoitureNoire h2,
+.Divo h2 {
+    text-transform: uppercase;
+    font-size: 56px;
+}
+
+.LaVoitureNoire p,
+.Divo p {
+    font-size: 16px;
+}
+
+.LaVoitureNoire {
+    background: #000;
+    color: #fff;
+}
+
+.LaVoitureNoire h3 {
+    text-transform: uppercase;
+    font-size: 24px;
 }

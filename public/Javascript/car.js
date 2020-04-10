@@ -1,5 +1,6 @@
 //Points to a div element where user combo will be inserted.
 let carDiv;
+let savedDiv;
 
 //Set up page when window has loaded
 window.onload = init;
@@ -7,7 +8,13 @@ window.onload = init;
 //Get pointers to parts of the DOM after the page has loaded.
 function init(){
     carDiv = document.getElementById("carDiv");
+    savedDiv = carDiv.cloneNode(true);
     loadCar();
+}
+
+function reset() {
+    carDiv.innerHTML = "";
+    $("#carDiv").replaceWith(savedDiv);
 }
 
 /* Loads current car model and adds them to the page. */
@@ -26,10 +33,10 @@ function loadCar() {
                 return;
 
             //Build string with user data
-            let htmlStr = '<div class="container-fluid">';
+            let htmlStr = '<div class="container-fluid p-0">';
 
             for (let key in carArray) {
-                if (carArray[key].model === 'Centodieci') {
+                if (carArray[key].CarName === 'Centodieci') {
                     htmlStr += '<div class="col-md-12 centodieciModel">';
                     htmlStr += '<div class="box">';
                     htmlStr += '<img class="img-fluid" src="../Img/centodieciLogo.svg" alt="Centodieci Logo">';
@@ -58,15 +65,15 @@ function loadCar() {
                     htmlStr += '</div>';
                     htmlStr += '</div>';
                     htmlStr += '<div class="col-md-4 specs text-center slideanim">';
-                    htmlStr += '<p><i class="fas fa-bolt"></i> Horsepower @ RPM: 1600 @ 7000</p>';
-                    htmlStr += '<p><i class="fas fa-tachometer-alt"></i> Top Speed: 236mph</p>';
-                    htmlStr += '<p><i class="fas fa-cogs"></i> Torque @ RPM: 1180</p>';
-                    htmlStr += '<p><i class="fas fa-stopwatch"></i> 0-100: 6.1s</p>';
-                    htmlStr += '<p><i class="fas fa-stopwatch"></i> 0-60: 2.4s</p>';
-                    htmlStr += '<p><i class="fas fa-car-battery"></i> Engine: W16</p>';
-                    htmlStr += '<p><i class="fas fa-road"></i> Displacement: 8.0L</p>';
-                    htmlStr += '<p><i class="fas fa-dollar-sign"></i> Price: $9million</p>';
-                    htmlStr += '<p><i class="fas fa-tag"></i> Release Date: 2020</p>';
+                    htmlStr += '<p><i class="fas fa-bolt"></i> Horsepower @ RPM:' + carArray[key].Horsepower + ' @ 7000</p>';
+                    htmlStr += '<p><i class="fas fa-tachometer-alt"></i> Top Speed: ' + carArray[key].Top_speed + '</p>';
+                    htmlStr += '<p><i class="fas fa-cogs"></i> Torque @ RPM: ' + carArray[key].Torque + '</p>';
+                    htmlStr += '<p><i class="fas fa-stopwatch"></i> 0-100: ' + carArray[key].zeroTo100 + '</p>';
+                    htmlStr += '<p><i class="fas fa-stopwatch"></i> 0-60: ' + carArray[key].zeroTo60 + '</p>';
+                    htmlStr += '<p><i class="fas fa-car-battery"></i> Engine: ' + carArray[key].Engine + '</p>';
+                    htmlStr += '<p><i class="fas fa-road"></i> Displacement: ' + carArray[key].Displacement + ' </p>';
+                    htmlStr += '<p><i class="fas fa-dollar-sign"></i> Price: $' + carArray[key].Price + '</p>';
+                    htmlStr += '<p><i class="fas fa-tag"></i> Release Date: ' + carArray[key].Release_Date + '</p>';
                     htmlStr += '</div>';
                     htmlStr += '<div class="col-md-4 slideanim">';
                     htmlStr += '<img class="img-fluid" src="../Img/CentodieciImg1.jpg" alt="Centodieci top view">';
@@ -80,9 +87,127 @@ function loadCar() {
                     htmlStr += '</div>';
                     htmlStr += '<div class="review">';
                     htmlStr += '<p>Please enter your review below:</p>';
-                    htmlStr += '<form action="" id="commentForm">';
-                    htmlStr += '<textarea name="comment" form="commentForm" cols="100" rows="5" placeholder="Enter here...">';
+                    htmlStr += '<form class="form-group" action="" id="commentForm">';
+                    htmlStr += '<textarea name="comment" form="commentForm" cols="100" rows="5" placeholder="Enter here..." required>';
                     htmlStr += '</textarea>';
+                    htmlStr += '<div class="form-group text-right">';
+                    htmlStr += '<button class="btn btn-primary" type="submit"><i class="fas fa-paper-plane"></i> Post</button>';
+                    htmlStr += '</div>';
+                    htmlStr += '</form>';
+                    htmlStr += '</div>';
+                    htmlStr += '</div>';
+                    htmlStr += '</div>';
+                } else if(carArray[key].CarName === 'Divo') {
+                    htmlStr += '<div class="col-md-12 p-0">';
+                    htmlStr += '<img class="img-fluid" src="../Img/DivoImg1.jpg" alt="Divo">';
+                    htmlStr += '</div>';
+                    htmlStr += '<div class="col-md-12 Divo">';
+                    htmlStr += '<div class="row">';
+                    htmlStr += '<div class="col-md-12">';
+                    htmlStr += '<div class="box2">'
+                    htmlStr += '<h2>Bugatti Divo</h2>';
+                    htmlStr += '</div>';
+                    htmlStr += '</div>';
+                    htmlStr += '<div class="col-md-6 p-5 justify-content-center">';
+                    htmlStr += 'The DIVO is the most agile and dynamic car BUGATTI has ever created - a perfect homage ' +
+                        'for the 110th anniversary, which will be held in 2019. A monumental driving machine, production ' +
+                        'will be strictly limited to just 40 units. Combining heart-stopping acceleration and greater ' +
+                        'downforce, it is made to excite – a car built for corners. Thanks to its optimal handling ' +
+                        'performance, the DIVO dances nimbly through curves; every bend becomes an exhilarating moment, ' +
+                        'a thrill that endures.';
+                    htmlStr += '</div>';
+                    htmlStr += '<div class="col-md-6 p-5 justify-content-center">';
+                    htmlStr += 'The DIVO is a more extreme BUGATTI. It represents a new interpretation of our philosophy ' +
+                        '‘form follows performance’ with an uncompromising pursuit of the utmost aerodynamic efficiency. ' +
+                        'To shape the future, we have embraced the past. The DIVO harks back to the golden era of ' +
+                        'coachbuilding, a proud tradition nearly a century old, by uniting a rolling chassis with a brand ' +
+                        'new body. The design is imposingly powerful and striking – unmistakably BUGATTI.';
+                    htmlStr += '</div>';
+                    htmlStr += '<div class="col-md-12 slideanim">';
+                    htmlStr += '<div class="box2">';
+                    htmlStr += '<h2>Specifications</h2>';
+                    htmlStr += '</div>';
+                    htmlStr += '</div>';
+                    htmlStr += '<div class="col-md-12 specs text-center slideanim">';
+                    htmlStr += '<p><i class="fas fa-bolt"></i> Horsepower @ RPM:' + carArray[key].Horsepower + ' @ 7000</p>';
+                    htmlStr += '<p><i class="fas fa-tachometer-alt"></i> Top Speed: ' + carArray[key].Top_speed + '</p>';
+                    htmlStr += '<p><i class="fas fa-cogs"></i> Torque @ RPM: ' + carArray[key].Torque + '</p>';
+                    htmlStr += '<p><i class="fas fa-stopwatch"></i> 0-100: ' + carArray[key].zeroTo100 + '</p>';
+                    htmlStr += '<p><i class="fas fa-stopwatch"></i> 0-60: ' + carArray[key].zeroTo60 + '</p>';
+                    htmlStr += '<p><i class="fas fa-car-battery"></i> Engine: ' + carArray[key].Engine + '</p>';
+                    htmlStr += '<p><i class="fas fa-road"></i> Displacement: ' + carArray[key].Displacement + ' </p>';
+                    htmlStr += '<p><i class="fas fa-dollar-sign"></i> Price: $' + carArray[key].Price + '</p>';
+                    htmlStr += '<p><i class="fas fa-tag"></i> Release Date: ' + carArray[key].Release_Date + '</p>';
+                    htmlStr += '</div>';
+                    htmlStr += '<div class="col-md-12 slideanim p-0">';
+                    htmlStr += '<img class="img-fluid" src="../Img/DivoImg2.jpg" alt="Divo">';
+                    htmlStr += '</div>';
+                    htmlStr += '<div class="box2 col-md-12">';
+                    htmlStr += '<h2>Reviews</h2>';
+                    htmlStr += '</div>';
+                    htmlStr += '<div class="review">';
+                    htmlStr += '<p>Please enter your review below:</p>';
+                    htmlStr += '<form class="form-group" action="" id="commentForm">';
+                    htmlStr += '<textarea name="comment" form="commentForm" cols="100" rows="5" placeholder="Enter here..." required>';
+                    htmlStr += '</textarea>';
+                    htmlStr += '<div class="form-group text-right">';
+                    htmlStr += '<button class="btn btn-primary" type="submit"><i class="fas fa-paper-plane"></i> Post</button>';
+                    htmlStr += '</div>';
+                    htmlStr += '</form>';
+                    htmlStr += '</div>';
+                    htmlStr += '</div>';
+                    htmlStr += '</div>';
+                } else if(carArray[key].CarName === 'LaVoitureNoire') {
+                    htmlStr += '<div class="col-md-12 p-0">';
+                    htmlStr += '<img class="img-fluid" src="../Img/LaVoitureNoireImg1.jpg" alt="La Voiture Noire">';
+                    htmlStr += '</div>';
+                    htmlStr += '<div class="col-md-12 LaVoitureNoire">';
+                    htmlStr += '<h2 class="pl-4">La Voiture Noire</h2>';
+                    htmlStr += '<h3 class="pl-4">Reminiscence of an icon</h3>';
+                    htmlStr += '<div class="row">';
+                    htmlStr += '<div class="col-md-6 p-5 justify-content-center">';
+                    htmlStr += '<p>A pioneering spirit, passion for perfection and the desire to continually redefine its ' +
+                        'limits have been the key characteristics of BUGATTI since it was founded 110 years ago. None ' +
+                        'of the brand’s masterpieces reflect these values more impressively than the Type 57 SC Atlantic. ' +
+                        'Created by Ettore Bugatti’s eldest son Jean, the only four Atlantics ever created stand for pure ' +
+                        'elegance and sophistication.</p>';
+                    htmlStr += '</div>';
+                    htmlStr += '<div class="col-md-6 p-5 justify-content-center">';
+                    htmlStr += '<p>With its homage to the fourth, all-black Atlantic, missing since the Second World War, ' +
+                        'BUGATTI is bringing the speed, technology, luxury and aesthetics of an icon into a new era. But ' +
+                        'the customised creation of “La Voiture Noire” is far more than a modern interpretation of the ' +
+                        'ghost of the gran turismo. “La Voiture Noire” is a tribute to BUGATTI’s own history, a manifesto ' +
+                        'of the BUGATTI aesthetic and a piece of automotive haute couture.</p>';
+                    htmlStr += '</div>';
+                    htmlStr += '<div class="col-md-12 p-0 slideanim">';
+                    htmlStr += '<img class="img-fluid" src="../Img/LaVoitureNoireImg2.jpg" alt="La Voiture Noire">';
+                    htmlStr += '</div>';
+                    htmlStr += '<div class="col-md-12 specs text-center slideanim">';
+                    htmlStr += '<h2>Specifications</h2>';
+                    htmlStr += '<p><i class="fas fa-bolt"></i> Horsepower @ RPM:' + carArray[key].Horsepower + ' @ 7000</p>';
+                    htmlStr += '<p><i class="fas fa-tachometer-alt"></i> Top Speed: ' + carArray[key].Top_speed + '</p>';
+                    htmlStr += '<p><i class="fas fa-cogs"></i> Torque @ RPM: ' + carArray[key].Torque + '</p>';
+                    htmlStr += '<p><i class="fas fa-stopwatch"></i> 0-100: ' + carArray[key].zeroTo100 + '</p>';
+                    htmlStr += '<p><i class="fas fa-stopwatch"></i> 0-60: ' + carArray[key].zeroTo60 + '</p>';
+                    htmlStr += '<p><i class="fas fa-car-battery"></i> Engine: ' + carArray[key].Engine + '</p>';
+                    htmlStr += '<p><i class="fas fa-road"></i> Displacement: ' + carArray[key].Displacement + ' </p>';
+                    htmlStr += '<p><i class="fas fa-dollar-sign"></i> Price: $' + carArray[key].Price + '</p>';
+                    htmlStr += '<p><i class="fas fa-tag"></i> Release Date: ' + carArray[key].Release_Date + '</p>';
+                    htmlStr += '</div>';
+                    htmlStr += '<div class="col-md-12 p-0 slideanim">';
+                    htmlStr += '<img class="img-fluid" src="../Img/LaVoitureNoireImg3.jpg" alt="La Voiture Noire">';
+                    htmlStr += '</div>';
+                    htmlStr += '<div class="box3 col-md-12">';
+                    htmlStr += '<h2>Reviews</h2>';
+                    htmlStr += '</div>';
+                    htmlStr += '<div class="review">';
+                    htmlStr += '<p>Please enter your review below:</p>';
+                    htmlStr += '<form class="form-group" action="" id="commentForm">';
+                    htmlStr += '<textarea name="comment" form="commentForm" cols="100" rows="5" placeholder="Enter here..." required>';
+                    htmlStr += '</textarea>';
+                    htmlStr += '<div class="form-group text-right">';
+                    htmlStr += '<button class="btn btn-primary" type="submit"><i class="fas fa-paper-plane"></i> Post</button>';
+                    htmlStr += '</div>';
                     htmlStr += '</form>';
                     htmlStr += '</div>';
                     htmlStr += '</div>';
@@ -109,7 +234,18 @@ function carModel(e) {
 
     // Car object
     let carObj = {
-        model: e.value
+        CarID: "",
+        CarName: e.value,
+        ModelID: "",
+        Horsepower: 0,
+        Top_speed: "0mph",
+        Torque: 0,
+        zeroTo100: "",
+        zeroTo60: "",
+        Engine: "",
+        Displacement: "",
+        Price: 0,
+        Release_Date: 0
     };
 
     xhttp.onreadystatechange = function() {
@@ -119,5 +255,5 @@ function carModel(e) {
     //Send model data to server
     xhttp.open("POST", "/model", true);
     xhttp.setRequestHeader("Content-type", "application/json");
-    xhttp.send( JSON.stringify(carObj) );
+    xhttp.send(JSON.stringify(carObj));
 }

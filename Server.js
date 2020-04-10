@@ -107,7 +107,7 @@ app.get('/model', function (request, response) {
         response.send(carArray);
     }
 
-    //If the last part of the path is a valid user id, return data about that user
+    //If the last part of the path is a valid car id, return data about that car
     else if(pathEnd in carArray){
         response.send(carArray[pathEnd]);
     }
@@ -120,10 +120,21 @@ app.get('/model', function (request, response) {
 app.post('/model', function (request, response) {
     //Output the data sent to the server
     let carModel = request.body;
-    console.log("Data received: " + JSON.stringify(carModel));
+    console.log("Data received: " + JSON.stringify(carModel.CarName));
 
-    //Add user to our data structure
-    carArray.push(carModel);
+    dbConnection.query('SELECT * FROM Car, Model WHERE CarName = ? AND Car.ModelID = Model.ModelID', [carModel.CarName],
+        function(error, results) {
+            if (error)
+                console.log(error);
+
+            //Add car to our data structure
+            if (carArray.length >= 1) {
+                carArray.length = 0;
+            }
+                carArray.push(results[0]);
+
+            console.log(carArray.length);
+        });
 
     //Finish off the interaction.
     response.send("Car");
