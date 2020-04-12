@@ -1,6 +1,9 @@
 //Points to a div element where user combo will be inserted.
 let carDiv;
 let savedDiv;
+let addUserResultDiv;
+let loginDiv;
+let commentDiv;
 
 //Set up page when window has loaded
 window.onload = init;
@@ -8,6 +11,9 @@ window.onload = init;
 //Get pointers to parts of the DOM after the page has loaded.
 function init(){
     carDiv = document.getElementById("carDiv");
+    addUserResultDiv = document.getElementById("AddUserResult");
+    loginDiv = document.getElementById("userLoginResult");
+    commentDiv = document.getElementById("commentDiv");
     savedDiv = carDiv.cloneNode(true);
     loadCar();
 }
@@ -86,8 +92,10 @@ function loadCar() {
                     htmlStr += '<h2>Reviews</h2>';
                     htmlStr += '</div>';
                     htmlStr += '<div class="review">';
+                    htmlStr += '<div class="commentDiv">';
+                    htmlStr += '</div>';
                     htmlStr += '<p>Please enter your review below:</p>';
-                    htmlStr += '<form class="form-group" action="" id="commentForm">';
+                    htmlStr += '<form class="form-group" action="/comment" id="commentForm">';
                     htmlStr += '<textarea name="comment" form="commentForm" cols="100" rows="5" placeholder="Enter here..." required>';
                     htmlStr += '</textarea>';
                     htmlStr += '<div class="form-group text-right">';
@@ -256,4 +264,81 @@ function carModel(e) {
     xhttp.open("POST", "/model", true);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send(JSON.stringify(carObj));
+}
+
+/* Posts a new user to the server. */
+function addUser() {
+    //Set up XMLHttpRequest
+    let xhttp = new XMLHttpRequest();
+
+    //Extract user data
+    let username = document.getElementById("regUsername").value;
+    let firstName = document.getElementById("regFirstName").value;
+    let lastName = document.getElementById("regLastName").value;
+    let gender = document.getElementById("gender").value;
+    let email = document.getElementById("regEmailAddress").value;
+    let password = document.getElementById("regPassword").value;
+    let confirmPassword = document.getElementById("regConfirmPassword").value;
+
+    //Create object with user data
+    let usrObj = {
+        username: username,
+        firstName: firstName,
+        lastName: lastName,
+        gender: gender,
+        email: email,
+        password: password,
+        confirmPassword: confirmPassword
+    };
+
+    //Set up function that is called when reply received from server
+    xhttp.onreadystatechange = function() {
+        if (this.readyState === 4 && this.status === 200) {
+            addUserResultDiv.innerHTML = "<span style='color: green'>User added successfully</span>.";
+        } else if (this.responseText === "Passwords do not match!") {
+            document.getElementById("regConfirmPassword").value = '';
+            addUserResultDiv.innerHTML = "<span style='color: red'>" + this.responseText + "</span>.";
+        } else {
+            addUserResultDiv.innerHTML = "<span style='color: red'>Error adding user</span>.";
+        }
+    };
+
+    //Send new user data to server
+    xhttp.open("POST", "/register", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send( JSON.stringify(usrObj) );
+}
+
+function loadUser() {
+    //Set up XMLHttpRequest
+    let xhttp = new XMLHttpRequest();
+
+    //Extract user data
+    let username = document.getElementById("loginUsername").value;
+    let password = document.getElementById("loginPassword").value;
+
+    //Create object with user data
+    let usrObj = {
+        username: username,
+        password: password
+    }
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState === 4 && this.status === 200) {
+            loginDiv.innerHTML = "<span style='color: green'>Login successful</span>.";
+            document.getElementsByClassName("nav-link")[0].outerHTML = "";
+            document.getElementsByClassName("nav-link")[0].outerHTML = "<a class='nav-link' href='/logout'>Logout</a>";
+        } else {
+            loginDiv.innerHTML = "<span style='color: red'>Error! Account " + usrObj.username + " not found!</span>.";
+        }
+    };
+
+    //Send new user data to server
+    xhttp.open("POST", "/login", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send( JSON.stringify(usrObj) );
+}
+
+function comment() {
+
 }

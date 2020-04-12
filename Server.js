@@ -27,70 +27,100 @@ app.get('/', function(request, response) {
 
 app.post('/register', function(request, response) {
 
-    var username = request.body.regUsername;
-    var firstName = request.body.regFirstName;
-    var lastName = request.body.regLastName;
-    var gender = request.body.gender;
-    var emailAddress = request.body.regEmailAddress;
-    var password = request.body.regPassword;
-    var confirmPassword = request.body.regConfirmPassword;
+    let newUser = request.body;
+    console.log("Data received: " + JSON.stringify(newUser));
 
-    if (username && firstName && lastName && gender && emailAddress && password && password == confirmPassword) {
+    let username = newUser.username;
+    let firstName = newUser.firstName;
+    let lastName =newUser.lastName;
+    let gender = newUser.gender;
+    let emailAddress = newUser.email;
+    let password = newUser.password;
+    let confirmPassword = newUser.confirmPassword;
+
+    if (username && firstName && lastName && gender && emailAddress && password && confirmPassword === password) {
         dbConnection.query('INSERT INTO User VALUES (?, ?, ?, ?, ?, ?)', [username, firstName, lastName, gender, emailAddress, password],
             function(error, result) {
                 //Check for errors
                 if (error)
                     console.log(error);
 
-                //Output results
-                console.log(result.affectedRows + ' rows updated. ID is ' + result.insertId);
+                if (result) {
+                    //Add user to our data structure
+                    userArray.push(newUser);
 
-                response.redirect('/index.html');
-        });
-    } else if (password !== confirmPassword){
-        response.send('Passwords do not match!');
-        response.end();
-    } else {
-        response.send('Error adding user!');
+                    //Output results
+                    console.log(result.affectedRows + ' rows updated. ID is ' + result.insertId);
+
+                    //Finish off the interaction.
+                    response.send("User added successfully.");
+                }
+            });
+    } else if (password !== confirmPassword) {
+        response.status(406);
+        response.send("Passwords do not match!");
         response.end();
     }
 });
+
+app.get('/register', function (request, response) {
+    //Split the path of the request into its components
+    var pathArray = request.url.split("/");
+
+    //Get the last part of the path
+    var pathEnd = pathArray[pathArray.length - 1];
+
+    //If path ends with 'users' we return all users
+    if(pathEnd === 'register'){
+        response.send(userArray);
+    }
+
+    //If the last part of the path is a valid user id, return data about that user
+    else if(pathEnd in userArray){
+        response.send(userArray[pathEnd]);
+    }
+
+    //The path is not recognized. Return an error message
+    else
+        response.send("{error: 'Path not recognized'}");
+})
 
 app.post('/login', function(request, response) {
-    var username = request.body.loginUsername;
-    var password = request.body.loginPassword;
-
     //Output the data sent to the server
-    let newUser = request.body;
+    let userLogin = request.body;
+    console.log("Data received: " + JSON.stringify(userLogin));
 
-    //Add user to our data structure
-    userArray.push(newUser);
+    let username = userLogin.username;
+    let password = userLogin.password;
 
-    dbConnection.query('SELECT * FROM User WHERE username = ? AND password = ?', [username, password], function(error, results) {
-        if (results.length > 0) {
-            request.session.loggedin = true;
-            request.session.username = username;
+    dbConnection.query('SELECT COUNT(*) as total FROM User WHERE username = ? AND password = ?', [username, password],
+        function(error, results) {
+            if (error) {
+                console.log(error);
+            }
 
-            //Finish off the interaction.
-            response.redirect('/index.html');
-        } else {
-            response.send('Incorrect Username and/or Password!');
-        }
-        response.end();
-    });
+            let user = JSON.parse(JSON.stringify(results));
+
+            if (user[0].total > 0) {
+                console.log(results);
+                request.session.loggedin = true;
+                request.session.username = username;
+
+                //Add car to our data structure
+                if (userArray.length >= 1) {
+                    userArray.length = 0;
+                }
+
+                //Add user to our data structure
+                userArray.push(userLogin);
+                console.log(userArray);
+
+                response.send("Login");
+            }
+        });
 });
 
-/*app.get('/home', function(request, response) {
-    if (request.session.loggedin) {
-        response.send('Welcome back, ' + request.session.username + '!');
-    } else {
-        response.send('Please login to view this page!');
-    }
-    response.end();
-});*/
-
 app.get('/logout', function (request, response) {
-    request.logout();
     request.session.destroy();
     response.redirect('/index.html');
 });
@@ -131,9 +161,8 @@ app.post('/model', function (request, response) {
             if (carArray.length >= 1) {
                 carArray.length = 0;
             }
-                carArray.push(results[0]);
 
-            console.log(carArray.length);
+            carArray.push(results[0]);
         });
 
     //Finish off the interaction.

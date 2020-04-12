@@ -15,12 +15,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="Javascript/validation.js"></script>
-    <script type="text/javascript" src="Javascript/car.js"></script>
+    <script src="Javascript/validation.js"></script>
+    <script src="Javascript/functionality.js"></script>
 </head>
 <body id="page" data-spy="scroll" data-target=".navbar" data-offset="60">
 
-<section class="navbar-area">
+<div class="navbar-area">
     <div class="container-fluid">
         <div class="menu">
             <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
@@ -46,11 +46,10 @@
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#registerModal">Register</a></li>
                 <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#loginModal">Login</a></li>
-                <!--<li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>-->
             </ul>
         </nav>
     </div>
-</section>
+</div>
 
 <div class="modal fade" role="dialog" id="registerModal">
     <div class="modal-dialog">
@@ -62,13 +61,13 @@
 
             <div class="modal-body">
 
-                <form role="form" id="registerForm" class="form-horizontal needs-validation" method="post" action="/register" novalidate>
+                <form id="registerForm" class="form-horizontal needs-validation" onsubmit="event.preventDefault();" novalidate>
                     <div class="form-row">
                         <div class="form-group input-group col-md-12">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroupPrependUsername"> <i class="fa fa-user"></i> </span>
                             </div>
-                            <input type="text" name="regUsername" class="form-control" placeholder="Username" id="regUsername" aria-describedby="inputGroupPrepend" required>
+                            <input type="text" name="regUsername" class="form-control" placeholder="Username" id="regUsername" aria-describedby="inputGroupPrependUsername" required>
                             <div class="invalid-feedback">
                                 Invalid Username!
                             </div>
@@ -96,7 +95,7 @@
 
                         <div class="form-group input-group col-md-12">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroupPrependGender"> <i class="fas fa-venus-mars"></i> </i> </span>
+                                <span class="input-group-text" id="inputGroupPrependGender"> <i class="fas fa-venus-mars"></i> </span>
                             </div>
                             <select name="gender" id="gender" class="form-control" aria-describedby="inputGroupPrependGender" required>
                                 <option selected disabled>Select Gender:</option>
@@ -143,9 +142,10 @@
                         </div>
 
                         <div class="form-group col-md-12">
-                            <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+                            <button type="submit" class="btn btn-primary btn-block" onclick="addUser()">Create Account</button>
                         </div>
                     </div>
+                    <p class="text-center" id="AddUserResult"></p>
                 </form>
             </div>
             <p class="text-center">Have an account? <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#loginModal">Log In</a> </p>
@@ -162,7 +162,7 @@
             </div>
 
             <div class="modal-body">
-                <form role="form" id="loginForm" class="form-horizontal needs-validation" method="post" action="login" novalidate>
+                <form id="loginForm" class="form-horizontal needs-validation" onsubmit="event.preventDefault();" novalidate>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-user"></i> </span>
@@ -190,7 +190,7 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Log in</button>
+                        <button type="submit" class="btn btn-primary" onclick="loadUser()">Log in</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                     </div>
                 </form>
@@ -246,23 +246,19 @@
                     <div class="car_model">
                         <a href="#">
                             <img class="img-fluid" src="Img/Centodieci_model.jpg" alt="Centodieci">
-
-                            <div class="text">
-                                <h3>
-                                    <a href="#">
-                                        Centodieci
-                                    </a>
-                                </h3>
-                                <p class="button">
-                                    <button class="btn btn-default btn-outline-dark" id="Centodieci" value="Centodieci"
-                                            onclick="carModel(this)">View Details</button>
-                                    <a href="#" class="btn btn-primary">
-                                        <i class="fa fa-heart"></i>
-                                        Add To Favorites
-                                    </a>
-                                </p>
-                            </div>
                         </a>
+
+                        <div class="text">
+                            <h3><a>Centodieci</a></h3>
+                            <p class="button">
+                                <button class="btn btn-default btn-outline-dark" id="Centodieci" value="Centodieci"
+                                        onclick="carModel(this)">View Details</button>
+                                <a href="#" class="btn btn-primary">
+                                    <i class="fa fa-heart"></i>
+                                    Add To Favorites
+                                </a>
+                            </p>
+                        </div>
                     </div>
 
                     <div class="car_model" style="margin-top: 77px">
@@ -272,9 +268,7 @@
 
                         <div class="text">
                             <h3>
-                                <a href="#">
-                                    Divo
-                                </a>
+                                <a href="#">Divo</a>
                             </h3>
                             <p class="button">
                                 <button class="btn btn-default btn-outline-dark" id="Divo" value="Divo"
@@ -296,9 +290,7 @@
 
                         <div class="text">
                             <h3>
-                                <a href="#">
-                                    La Voiture Noire
-                                </a>
+                                <a href="#">La Voiture Noire</a>
                             </h3>
                             <p class="button">
                                 <button class="btn btn-default btn-outline-dark" id="LaVoitureNoire" value="LaVoitureNoire"
@@ -316,7 +308,7 @@
     </div>
 </section>
 
-<section class="footer">
+<div class="footer">
     <div id="footer">
         <div class="container-fluid">
             <div class="row justify-content-center">
@@ -349,7 +341,7 @@
             </div>
         </div>
     </div>
-</section>
+</div>
 
 <script>
     function openNav() {
