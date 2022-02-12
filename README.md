@@ -11,7 +11,6 @@
   <img alt="MySQL" src="https://img.shields.io/badge/MariaDB-964B00?logo=mariadb&logoColor=white" />
   <img alt="Npm" src="https://img.shields.io/badge/npm->=8.3.1-blue.svg" />
   <img alt="Node" src="https://img.shields.io/badge/node->=16.14.0-blue.svg" />
-  <img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-0077B5?logo=linkedin&logoColor=white&link=https://linkedin.com/in/rohan-bhautoo" />
 </p>
 
 > Bugatti Website is a single page web application that was built using Node.js. The page will change based on the user input without reloading. The front end of the website is written in HTML, CSS and JavaScript and it communicates with the back end using AJAX. MariaDB database is connected to the website to store user information and the data is exchanged in JSON format.
