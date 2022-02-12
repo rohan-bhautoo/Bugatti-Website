@@ -73,10 +73,14 @@
 > After installing MariaDB, import the table from [SQL](/public/SQL/Website.sql), in the database, using the following command.
 
 ```sh
-source C:\[Path to file]\public\SQL\Website.sql
+mysql -u root -p
 ```
 
-## Run tests
+```sh
+source C:\[Path to folder]\public\SQL\Website.sql
+```
+
+> Then, run the web application, in a browser, using node command.
 
 ```sh
 node Server
