@@ -13,6 +13,7 @@
   <img alt="Node" src="https://img.shields.io/badge/node->=16.14.0-blue.svg" />
 </p>
 
+## Description
 > Bugatti Website is a single page web application that was built using Node.js. The page will change based on the user input without reloading. The front end of the website is written in HTML, CSS and JavaScript and it communicates with the back end using AJAX. MariaDB database is connected to the website to store user information and the data is exchanged in JSON format.
 > 
 > See other images of the website in the [Screenshot](/public/Screenshots) folder.
