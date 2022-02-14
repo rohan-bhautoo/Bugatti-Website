@@ -31,7 +31,7 @@
 ### MariaDB
 > MariaDB Server is one of the most popular open source relational databases. It’s made by the original developers of MySQL and guaranteed to stay open source. It is part of most cloud offerings and the default in most Linux distributions. Download it [here](https://mariadb.org/download/).
 > 
-> The following tables will be used to store information in the database.
+> The three tables below will be used to store information in the database.
 
 <table align="center">
   <tr>
