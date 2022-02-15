@@ -42,7 +42,7 @@
   <tr><td>
          
 | Username (PK) | 
-| ------------- |
+| :------------ |
 | FirstName     |   
 | LastName      |   
 | DOB           |
@@ -53,14 +53,14 @@
 </td><td>
       
 | CarID (PK)   |
-| ------------ |
+| :----------- |
 | Description  |
 | ModelID (FK) |
       
 </td><td>
     
 | ModelID (PK) |
-| ------------ |
+| :----------- |
 | Name         |
 | TopSpeed     |
 | Performance  |
